@@ -21,13 +21,14 @@
             </div>
         </div>
         <div class="item">
-            <img src="~/images/banner2.svg" alt="Visual Studio" class="img-responsive" />
+            <img src="~/images/LogoMLS.svg" alt="Visual Studio" class="img-responsive" />
             <div class="carousel-caption" role="option">
                 <p>
                     There are powerful new features in Visual Studio for building modern web apps.
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkID=525030&clcid=0x409">
-                        Learn More
-                    </a>
+                    <a class="btn btn-default" asp-area="" asp-controller="Home" asp-action="About"> 
+                    Leer mas
+                    </a>>
+                    
                 </p>
             </div>
         </div>
@@ -55,7 +56,7 @@
 
 <div class="row">
     <div class="col-md-3">
-        <h2 style="text-transform: uppercase;">Quienes somos:</h2>
+        <h2 style="text-transform: uppercase;">Quienes somos</h2>
         <p>
             Somos una institución especializada en Diagnóstico Clínico Veterinario 
             Laboratorial con el respaldo tecnológico y profesional para el ejercicio idóneo, 
@@ -66,21 +67,22 @@
     <div class="col-md-3">
         <h2>SERVICIOS VETERINARIOS</h2>
         <ul>
-            <li><a href="">Departamento Diagnóstico.</a></li>
-            <li><a href="">Departamento Técnico.</a></li>
+            <li><a asp-area="" asp-controller="Conceptos" asp-action="Diagnostico">Departamento Diagnóstico.</a></li>
+            <li>Departamento Técnico.</li>
         </ul>
     </div>
     <div class="col-md-3">
         <h2>INFORMACION GENERAL</h2>
         <ul>
-            <li><a href="">Horario de Atención.</a></li>
-            <li><a href="">Servicio a Domicilio.</a></li>
-            <li><a href="">Envío de Muestras.</a></li>
-            <li><a href="">Servicio de Toma de muestras.</a></li>
-            <li><a href="">Suministro de material para muestreo y Protocolo de envío.</a></li>
-            <li><a href="">Entrega de resultados.</a></li>
-            <li><a href="">Condiciones de pago.</a></li>
-            <li><a href="">Datos de Contacto.</a></li>
+            <li>Horario de Atención.</li>
+            <li>Servicio a Domicilio.</li>
+            <li>Envío de Muestras.</li>
+            <li>Servicio de Toma de muestras.</li>
+            <li>Suministro de material para muestreo y Protocolo de envío.</li>
+            <li>Entrega de resultados.</li>
+            <li>Condiciones de pago.</li>
+            <li>Datos de Contacto.</li>
+            <li><a asp-area="" asp-controller="" asp-action="">Ver más.</a></li>
         </ul>
     </div>
     <div class="col-md-3">
