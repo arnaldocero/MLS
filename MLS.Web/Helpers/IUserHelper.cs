@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MLS.Web.Data.Entities;
+using MLS.Web.Models;
 using System.Threading.Tasks;
 
 namespace MLS.Web.Helpers
@@ -15,6 +16,10 @@ namespace MLS.Web.Helpers
         Task AddUserToRoleAsync(UserEntity user, string roleName);
 
         Task<bool> IsUserInRoleAsync(UserEntity user, string roleName);
+        Task<SignInResult> LoginAsync(LoginViewModel model);
+
+        Task LogoutAsync();
+
 
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using MLS.Web.Data.Entities;
+using MLS.Web.Models;
 using System.Threading.Tasks;
 
 namespace MLS.Web.Helpers
@@ -8,13 +9,16 @@ namespace MLS.Web.Helpers
     {
         private readonly UserManager<UserEntity> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<UserEntity> _signInManager;
 
         public UserHelper(
             UserManager<UserEntity> userManager,
-            RoleManager<IdentityRole> roleManager)
+            RoleManager<IdentityRole> roleManager,
+            SignInManager<UserEntity> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _signInManager = signInManager;
         }
         public async Task<IdentityResult> AddUserAsync(UserEntity user, string password)
         {
@@ -46,6 +50,20 @@ namespace MLS.Web.Helpers
         public async Task<bool> IsUserInRoleAsync(UserEntity user, string roleName)
         {
             return await _userManager.IsInRoleAsync(user, roleName);
+        }
+
+        public async Task<SignInResult> LoginAsync(LoginViewModel model)
+        {
+            return await _signInManager.PasswordSignInAsync(
+                model.Username,
+                model.Password,
+                model.RememberMe,
+                false);
+        }
+
+        public async Task LogoutAsync()
+        {
+            await _signInManager.SignOutAsync();
         }
 
     }
