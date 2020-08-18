@@ -24,8 +24,8 @@ namespace MLS.Web.Data
             await _dataContext.Database.EnsureCreatedAsync();
             await CheckRolesAsync();
             var admin = await CheckUserAsync("1140827910", "Arnaldo Alfonso", "Pacheco Sarmiento", "arnaldopachecosarmiento@gmail.com", "3016253057", "Calle 9A #25-62", UserType.Administrador);
-            var operador = await CheckUserAsync("1140827910", "Arnaldo Alfonso", "Pacheco Sarmiento", "p.arnaldoalfonso@hotmail.com", "3016253057", "Calle 9A #25-62", UserType.Operario);
-            var consulta = await CheckUserAsync("1140827910", "Arnaldo Alfonso", "Pacheco Sarmiento", "arnaldopacheco1@outlook.com", "3016253057", "Calle 9A #25-62", UserType.Consulta);
+            var operador = await CheckUserAsync("1140827910", "Arnaldo Alfonso", "Pacheco Sarmiento", "p.arnaldoalfonso@hotmail.com", "3016253057", "Calle 9A #25-62", UserType.Usertrabajador);
+            var consulta = await CheckUserAsync("1140827910", "Arnaldo Alfonso", "Pacheco Sarmiento", "arnaldopacheco1@outlook.com", "3016253057", "Calle 9A #25-62", UserType.Userpaciente);
             await CheckTaxisAsync(admin,operador,consulta);
         }
 
@@ -62,8 +62,8 @@ namespace MLS.Web.Data
         private async Task CheckRolesAsync()
         {
             await _userHelper.CheckRoleAsync(UserType.Administrador.ToString());
-            await _userHelper.CheckRoleAsync(UserType.Consulta.ToString());
-            await _userHelper.CheckRoleAsync(UserType.Operario.ToString());
+            await _userHelper.CheckRoleAsync(UserType.Userpaciente.ToString());
+            await _userHelper.CheckRoleAsync(UserType.Usertrabajador.ToString());
 
         }
 

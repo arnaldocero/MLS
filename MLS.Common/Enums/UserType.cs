@@ -7,7 +7,7 @@ namespace MLS.Common.Enums
     public enum UserType
     {
         Administrador,
-        Operario,
-        Consulta
+        Userpaciente,
+        Usertrabajador
     }
 }

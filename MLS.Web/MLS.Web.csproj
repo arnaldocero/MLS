@@ -14,4 +14,9 @@
     <ProjectReference Include="..\MLS.Common\MLS.Common.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\User\" />
+    <Folder Include="wwwroot\pdf\" />
+  </ItemGroup>
+
 </Project>

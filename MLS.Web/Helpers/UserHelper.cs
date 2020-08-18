@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using MLS.Common.Enums;
 using MLS.Web.Data.Entities;
 using MLS.Web.Models;
 using System.Threading.Tasks;
@@ -20,6 +21,33 @@ namespace MLS.Web.Helpers
             _roleManager = roleManager;
             _signInManager = signInManager;
         }
+
+        public async Task<UserEntity> AddUserAsync(AddUserViewModel model, string path)
+        {
+            UserEntity userEntity = new UserEntity
+            {
+                Address = model.Address,
+                Document = model.Document,
+                Email = model.Username,
+                FirstName = model.FirstName,
+                LastName = model.LastName,
+                PicturePath = path,
+                PhoneNumber = model.PhoneNumber,
+                UserName = model.Username,
+                UserType = model.UserTypeId == 1 ? UserType.Userpaciente : UserType.Usertrabajador
+            };
+
+            IdentityResult result = await _userManager.CreateAsync(userEntity, model.Password);
+            if (result != IdentityResult.Success)
+            {
+                return null;
+            }
+
+            UserEntity newUser = await GetUserByEmailAsync(model.Username);
+            await AddUserToRoleAsync(newUser, userEntity.UserType.ToString());
+            return newUser;
+        }
+
         public async Task<IdentityResult> AddUserAsync(UserEntity user, string password)
         {
             return await _userManager.CreateAsync(user, password);

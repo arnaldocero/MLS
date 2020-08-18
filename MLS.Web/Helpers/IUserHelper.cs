@@ -7,6 +7,7 @@ namespace MLS.Web.Helpers
 {
     public interface IUserHelper
     {
+        Task<UserEntity> AddUserAsync(AddUserViewModel model, string path);
         Task<UserEntity> GetUserByEmailAsync(string email);
 
         Task<IdentityResult> AddUserAsync(UserEntity user, string password);

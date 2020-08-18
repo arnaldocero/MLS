@@ -53,7 +53,7 @@ namespace MLS.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Name,Document,FirstName,pdfUrl,UploadDate")] DocumentoEntity documentoEntity)
+        public async Task<IActionResult> Create( DocumentoEntity documentoEntity)
         {
             if (ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace MLS.Web.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Document,FirstName,pdfUrl,UploadDate")] DocumentoEntity documentoEntity)
+        public async Task<IActionResult> Edit(int id,  DocumentoEntity documentoEntity)
         {
             if (id != documentoEntity.Id)
             {
