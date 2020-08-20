@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using MLS.Web.Data.Entities;
 using MLS.Web.Helpers;
 using MLS.Web.Models;
 using System.Linq;
@@ -91,7 +92,7 @@ namespace MLS.Web.Controllers
                 }
                 else
                 {
-
+                    return RedirectToAction("Index", "UserCreated");
                 }
                 /*
                 LoginViewModel loginViewModel = new LoginViewModel
@@ -112,7 +113,94 @@ namespace MLS.Web.Controllers
             model.UserTypes = _combosHelper.GetComboRoles();
             return View(model);
         }
+        public async Task<IActionResult> ChangeUser()
+        {
+            UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
+            if (user == null)
+            {
+                return NotFound();
+            }
 
+            EditUserViewModel model = new EditUserViewModel
+            {
+                Address = user.Address,
+                Document = user.Document,
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                PhoneNumber = user.PhoneNumber,
+                PicturePath = user.PicturePath
+            };
+
+            return View(model);
+
+
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> ChangeUser(EditUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string path = model.PicturePath;
+
+                if (model.PictureFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(model.PictureFile, "User");
+                }
+
+                UserEntity user = await _userHelper.GetUserAsync(User.Identity.Name);
+
+                user.Document = model.Document;
+                user.FirstName = model.FirstName;
+                user.LastName = model.LastName;
+                user.Address = model.Address;
+                user.PhoneNumber = model.PhoneNumber;
+                user.PicturePath = path;
+
+                await _userHelper.UpdateUserAsync(user);
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(model);
+        }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(ChangePasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await _userHelper.GetUserAsync(User.Identity.Name);
+                if (user != null)
+                {
+                    var result = await _userHelper.ChangePasswordAsync(user, model.OldPassword, model.NewPassword);
+                    if (result.Succeeded)
+                    {
+                        return RedirectToAction("ChangeUser");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError(string.Empty, result.Errors.FirstOrDefault().Description);
+                    }
+                }
+                else
+                {
+                    ModelState.AddModelError(string.Empty, "User no found.");
+                }
+            }
+
+            return View(model);
+        }
+
+        public IActionResult NotAuthorized()
+        {
+            return View();
+        }
 
 
     }

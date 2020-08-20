@@ -36,20 +36,24 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Datos de Contacto</a></li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Administrador"))
                     {
-                        <li><a asp-area="" asp-controller="DocumentoEntities" asp-action="Index">Ingresar documentos</a></li>
-                        <li><a asp-area="" asp-controller="Account" asp-action="Register">Ingresar Nuevo Usuario</a></li>
+                        <li><a asp-area="" asp-controller="DocumentoEntities" 
+                               asp-action="Index">Documentos</a></li>
+                        <li><a asp-area="" asp-controller="Account" 
+                               asp-action="Register">Ingresar Nuevo Usuario</a></li>
 
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Usertrabajador"))
                     {
-                        <li><a asp-area="" asp-controller="DocumentoEntities" asp-action="Index">Ingresar documentos</a></li>
+                        <li><a asp-area="" asp-controller="DocumentoEntities" 
+                               asp-action="Create">Ingresar documentos</a></li>
 
 
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Userpaciente"))
                     {
-                        
 
+                        <li><a asp-area="" asp-controller="DocumentoEntities"
+                               asp-action="Indexx">Lista de Archivos</a></li>
 
                     }
                 </ul>

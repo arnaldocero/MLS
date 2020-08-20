@@ -1,4 +1,4 @@
-﻿@model MLS.Web.Data.Entities.DocumentoEntity
+﻿@model MLS.Web.Models.DocumentoViewModel
 
 @{
     ViewData["Title"] = "Edit";
@@ -10,9 +10,10 @@
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action="Edit">
+        <form asp-action="Edit" enctype="multipart/form-data">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="pdfUrl" />
             <div class="form-group">
                 <label asp-for="Name" class="control-label"></label>
                 <input asp-for="Name" class="form-control" />
@@ -30,12 +31,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="pdfUrl" class="control-label"></label>
-                <input asp-for="pdfUrl" class="form-control" />
+                <input asp-for="pdfUrl" class="form-control"  type="file"/>
                 <span asp-validation-for="pdfUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="UploadDate" class="control-label"></label>
-                <input asp-for="UploadDate" class="form-control" />
+                <input asp-for="UploadDate" class="form-control"  />
                 <span asp-validation-for="UploadDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -43,6 +44,20 @@
             </div>
         </form>
     </div>
+    <div class="col-md-4">
+        @if (!string.IsNullOrEmpty(Model.pdfUrl))
+        {
+
+
+            <a href="@Url.Content(Model.pdfUrl)">
+                <i class="glyphicon glyphicon-book"></i>
+                Ver
+            </a>
+
+
+        }
+    </div>
+
 </div>
 
 <div>

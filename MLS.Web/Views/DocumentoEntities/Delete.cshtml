@@ -33,7 +33,17 @@
             @Html.DisplayNameFor(model => model.pdfUrl)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.pdfUrl)
+            @if (!string.IsNullOrEmpty(Model.pdfUrl))
+            {
+
+
+                <a href="@Url.Content(Model.pdfUrl)">
+                    <i class="glyphicon glyphicon-book"></i>
+                    Ver
+                </a>
+
+
+            }
         </dd>
         <dt>
             @Html.DisplayNameFor(model => model.UploadDate)

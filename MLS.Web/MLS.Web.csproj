@@ -16,7 +16,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\images\User\" />
-    <Folder Include="wwwroot\pdf\" />
+    <Folder Include="wwwroot\pdf\archivos\" />
   </ItemGroup>
 
 </Project>
