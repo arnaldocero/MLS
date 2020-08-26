@@ -24,6 +24,10 @@ namespace MLS.Web.Data.Entities
         [MaxLength(250, ErrorMessage = "El campo {0} no puede tener más de {1} caracteres.")]
         [Required(ErrorMessage = "El campo {0} es obligatorio.")]
         public string FirstName { get; set; }
+        [Display(Name = "Email")]
+        [DataType(DataType.EmailAddress, ErrorMessage = "Direccion de Email no valido")]
+        [Required(ErrorMessage = "El campo {0} es obligatorio.")]
+        public String Email { get; set; }
 
         [Display(Name = "Archivo PDF")]
 		public string pdfUrl { get; set; }

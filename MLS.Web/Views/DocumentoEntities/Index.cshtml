@@ -22,11 +22,15 @@
                 @Html.DisplayNameFor(model => model.FirstName)
             </th>
             <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.pdfUrl)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.UploadDate)
             </th>
+
             <th></th>
         </tr>
     </thead>
@@ -43,14 +47,18 @@
                 @Html.DisplayFor(modelItem => item.FirstName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
                 @if (!string.IsNullOrEmpty(item.pdfUrl))
                 {
-                
 
-                    <a href="@Url.Content(item.pdfUrl)"><i class="glyphicon glyphicon-book"></i>
+
+                    <a href="@Url.Content(item.pdfUrl)" target="_blank">
+                        <i class="glyphicon glyphicon-book"></i>
                         Ver
                     </a>
-                    
+
 
                 }
             </td>

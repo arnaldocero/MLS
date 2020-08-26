@@ -79,6 +79,7 @@ namespace MLS.Web.Data
                     Name = "Primer documento",
                     Document = "1140827910",
                     FirstName = "Arnaldo Pacheco",
+                    Email= "arnaldopachecosarmiento@gmail.com",
                     pdfUrl = "pdf/archivo/documento.pdf",
                     UploadDate = DateTime.UtcNow,
                     User=operador
@@ -92,6 +93,7 @@ namespace MLS.Web.Data
                     Name = "Segundo documento",
                     Document = "1043605313",
                     FirstName = "Marijulie Solano",
+                    Email = "arnaldopachecosarmiento@gmail.com",
                     pdfUrl = "pdf/archivo/documentos.pdf",
                     UploadDate = DateTime.UtcNow,
                     User = operador

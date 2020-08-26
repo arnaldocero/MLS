@@ -100,7 +100,7 @@ namespace MLS.Web.Controllers
 
 
                 // TODO: Pending to change to: this.User.Identity.Name
-                view.User = await this._userHelper.GetUserAsync("arnaldopachecosarmiento@gmail.com");
+                view.User = await this._userHelper.GetUserAsync(view.Email);
                 var product = this.ToDocumen(view, path);
                 _context.Add(product);
                 await _context.SaveChangesAsync();
@@ -118,6 +118,7 @@ namespace MLS.Web.Controllers
                 Name = view.Name,
                 Document = view.Document,
                 FirstName = view.FirstName,
+                Email=view.Email,
                 pdfUrl = path,
                 UploadDate=view.UploadDate,
                 User = view.User
@@ -157,6 +158,7 @@ namespace MLS.Web.Controllers
                 Name =documento.Name,
                 Document = documento.Document,
                 FirstName = documento.FirstName,
+                Email=documento.Email,
                 pdfUrl = documento.pdfUrl,
                 UploadDate = documento.UploadDate,
                 User = documento.User
@@ -193,7 +195,7 @@ namespace MLS.Web.Controllers
                     }
 
                     // TODO: Pending to change to: this.User.Identity.Name
-                    view.User = await this._userHelper.GetUserAsync("arnaldopachecosarmiento@gmail.com");
+                    view.User = await this._userHelper.GetUserAsync(view.Email);
                     var product = this.ToDocumen(view, path);
                     _context.Update(product);
                     await _context.SaveChangesAsync();

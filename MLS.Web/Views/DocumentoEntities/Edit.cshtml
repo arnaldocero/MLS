@@ -30,13 +30,18 @@
                 <span asp-validation-for="FirstName" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="pdfUrl" class="control-label"></label>
-                <input asp-for="pdfUrl" class="form-control"  type="file"/>
+                <input asp-for="pdfUrl" class="form-control" type="file" />
                 <span asp-validation-for="pdfUrl" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="UploadDate" class="control-label"></label>
-                <input asp-for="UploadDate" class="form-control"  />
+                <input asp-for="UploadDate" class="form-control" />
                 <span asp-validation-for="UploadDate" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -47,13 +52,13 @@
     <div class="col-md-4">
         @if (!string.IsNullOrEmpty(Model.pdfUrl))
         {
+           <iframe src="@Url.Content(Model.pdfUrl)?
+                   srcid=1AdyzEZ8rhItZZ6PtQpHYsX4MyIpuYHgJ&pid=explorer&efh=false&a=v&chrome=false&embedded=true"  
+                   width="500" height="500">
 
+           </iframe>
 
-            <a href="@Url.Content(Model.pdfUrl)">
-                <i class="glyphicon glyphicon-book"></i>
-                Ver
-            </a>
-
+           
 
         }
     </div>

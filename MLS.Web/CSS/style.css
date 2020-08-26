@@ -1,0 +1,7 @@
+﻿body {
+    background: url(../images/body-bg.gif) 50% 0;
+    font: 12px/18px Arial, Helvetica, sans-serif;
+    color: #a7a7a7;
+    position: relative;
+    min-width: 970px;
+}

@@ -8,6 +8,7 @@
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <link rel="stylesheet" href="~/css/site.css" />
+        
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
@@ -15,6 +16,15 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     </environment>
+    <style>
+        body {
+            background: url(../images/body-bg.gif) 50% 0;
+            font: 12px/18px Arial, Helvetica, sans-serif;
+            color: #a7a7a7;
+            position: relative;
+            min-width: 970px;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -36,24 +46,36 @@
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Datos de Contacto</a></li>
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Administrador"))
                     {
-                        <li><a asp-area="" asp-controller="DocumentoEntities" 
-                               asp-action="Index">Documentos</a></li>
-                        <li><a asp-area="" asp-controller="Account" 
-                               asp-action="Register">Ingresar Nuevo Usuario</a></li>
+                        <li>
+                            <a asp-area="" asp-controller="DocumentoEntities"
+                               asp-action="Index">Documentos</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Account"
+                               asp-action="Register">Ingresar Nuevo Usuario</a>
+                        </li>
 
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Usertrabajador"))
                     {
-                        <li><a asp-area="" asp-controller="DocumentoEntities" 
-                               asp-action="Create">Ingresar documentos</a></li>
+                        <li>
+                            <a asp-area="" asp-controller="DocumentoEntities"
+                               asp-action="Create">Ingresar documentos</a>
+                        </li>
+                        <li>
+                            <a asp-area="" asp-controller="Account"
+                               asp-action="Register">Ingresar Nuevo Usuario</a>
+                        </li>
 
 
                     }
                     @if (User.Identity.IsAuthenticated && User.IsInRole("Userpaciente"))
                     {
 
-                        <li><a asp-area="" asp-controller="DocumentoEntities"
-                               asp-action="Indexx">Lista de Archivos</a></li>
+                        <li>
+                            <a asp-area="" asp-controller="DocumentoEntities"
+                               asp-action="Indexx">Lista de Archivos</a>
+                        </li>
 
                     }
                 </ul>
@@ -68,7 +90,7 @@
                         <li><a asp-area="" asp-controller="Account" asp-action="Login">Login</a></li>
                     }
 
-                    
+
                 </ul>
             </div>
         </div>
