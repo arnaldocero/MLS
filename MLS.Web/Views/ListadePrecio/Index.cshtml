@@ -2,9 +2,43 @@
 @{
     ViewData["Title"] = "Listado de análisis y precios 2020";
 }
+    <style type="text/css">
+        .box {
+            font-family: Century Gothic,CenturyGothic,AppleGothic,sans-serif;
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: 400;
+            text-align: center;
+            background: #889ccf;
+            margin: 0 0 25px;
+            overflow: hidden;
+            padding: 20px;
+            border-radius: 35px 0px 35px 0px;
+            -moz-border-radius: 35px 0px 35px 0px;
+            -webkit-border-radius: 35px 0px 35px 0px;
+            border: 2px solid #5878ca;
+        }
+
+            .box h2 {
+                text-align: center;
+            }
+
+            .box h3 {
+                text-align: center;
+            }
+
+            .box h4 {
+                text-align: center;
+            }
+
+        img {
+            display: block;
+            margin: auto;
+        }
+    </style>
 
     <h2>Información para nuestros clientes</h2>
-<div>
+<div class="box">
     <p>
         MLS CENTRAL DE SERVICIOS VETERINARIOS
         Campestre, Sector Villa Lorena, Mz B Lote 38, Piso 1
@@ -13,7 +47,7 @@
 
     </p>
 </div>
-<div>
+<div class="box">
     <p>
         En MLS CSVet – Unidad Laboratorio Clínico:
         Nos dedicamos al servicio de diagnóstico veterinario, apoyando las necesidades del sector veterinario, 
@@ -32,7 +66,7 @@
         </center>
     </p>
 </div>
-<div>
+<div class="box">
     <p>
         Atte.,
         MARIA LINA SIMANCAS M. MVZ Esp.
@@ -40,7 +74,7 @@
 
     </p>
 </div>
-<div>
+<div class="box">
     <a asp-area="" asp-controller="ListadePrecio" asp-action="Lista">Lista de Precios</a>
 </div>
 

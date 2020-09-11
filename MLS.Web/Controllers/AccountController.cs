@@ -1,7 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using MLS.Web.Data.Entities;
 using MLS.Web.Helpers;
 using MLS.Web.Models;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +14,11 @@ namespace MLS.Web.Controllers
         private readonly IUserHelper _userHelper;
         private readonly IImageHelper _imageHelper;
         private readonly ICombosHelper _combosHelper;
+        List<SelectListItem> list = new List<SelectListItem>
+            {
+                
+                new SelectListItem { Value = "1", Text = "Userpaciente" }
+            };
 
         public AccountController(IUserHelper userHelper,
             IImageHelper imageHelper,
@@ -82,6 +89,60 @@ namespace MLS.Web.Controllers
                     path = await _imageHelper.UploadImageAsync(model.PictureFile, "User");
                 }
 
+                Data.Entities.UserEntity user = await _userHelper.AddUserAsync(model, path);
+
+                if (user == null)
+                {
+                    ModelState.AddModelError(string.Empty, "This email is already used.");
+                    model.UserTypes = _combosHelper.GetComboRoles();
+                    return View(model);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "UserCreated");
+                }
+                /*
+                LoginViewModel loginViewModel = new LoginViewModel
+                {
+                    Password = model.Password,
+                    RememberMe = false,
+                    Username = model.Username
+                };
+
+                Microsoft.AspNetCore.Identity.SignInResult result2 = await _userHelper.LoginAsync(loginViewModel);
+
+                if (result2.Succeeded)
+                {
+                    return RedirectToAction("Index", "Home");
+                }*/
+            }
+
+            model.UserTypes = _combosHelper.GetComboRoles();
+            return View(model);
+        }
+        public IActionResult Registerp()
+        {
+            AddUserViewModel model = new AddUserViewModel
+            {
+                UserTypes = _combosHelper.GetComboRoles()
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Registerp(AddUserViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                string path = string.Empty;
+
+                if (model.PictureFile != null)
+                {
+                    path = await _imageHelper.UploadImageAsync(model.PictureFile, "User");
+                }
+                
                 Data.Entities.UserEntity user = await _userHelper.AddUserAsync(model, path);
 
                 if (user == null)
