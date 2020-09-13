@@ -33,7 +33,7 @@
         color: white;
     }
     .form-register .form-control{
-        width:200px;
+        width:300px;
 
     }
 
@@ -82,7 +82,11 @@
 
                 <partial name="_User" />
 
-
+                <div class="form-group">
+                    <label asp-for="UserTypeId" class="control-label"></label>
+                    <select asp-for="UserTypeId" asp-items="Model.UserTypes" class="form-control"></select>
+                    <span asp-validation-for="UserTypeId" class="text-danger"></span>
+                </div>
 
                 <div class="form-group">
                     <label asp-for="Password" class="control-label"></label>

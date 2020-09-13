@@ -4,52 +4,112 @@
     ViewData["Title"] = "Create";
 }
 
-<h2>Create</h2>
+    <style>
+        .form-register {
+            width: 400px;
+            background: #24303c;
+            padding: 30px;
+            margin: auto;
+            margin-top: 100px;
+            border-radius: 4px;
+            font-family: 'calibri';
+            color: white;
+            box-shadow: 7px 13px 37px #000;
+        }
 
-<h4>DocumentoEntity</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create" enctype="multipart/form-data">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Document" class="control-label"></label>
-                <input asp-for="Document" class="form-control" />
-                <span asp-validation-for="Document" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FirstName" class="control-label"></label>
-                <input asp-for="FirstName" class="form-control" />
-                <span asp-validation-for="FirstName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImageFile" class="control-label"></label>
-                <input asp-for="ImageFile" class="form-control" />
-                <span asp-validation-for="ImageFile" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="UploadDate" class="control-label"></label>
-                <input asp-for="UploadDate" class="form-control" />
-                <span asp-validation-for="UploadDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
+            .form-register h4 {
+                font-size: 22px;
+                margin-bottom: 20px;
+            }
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+        .controls {
+            width: 100%;
+            background: #24303c;
+            padding: 10px;
+            border-radius: 4px;
+            margin-bottom: 16px;
+            border: 1px solid #1f53c5;
+            font-family: 'calibri';
+            font-size: 18px;
+            color: white;
+        }
 
+        .form-register .form-control {
+            width: 300px;
+        }
+
+        .form-register p {
+            height: 40px;
+            text-align: center;
+            font-size: 18px;
+            line-height: 40px;
+        }
+
+        .form-register a {
+            color: white;
+            text-decoration: none;
+        }
+
+            .form-register a:hover {
+                color: white;
+                text-decoration: underline;
+            }
+
+        .form-register .botons {
+            width: 100%;
+            background: #1f53c5;
+            border: none;
+            padding: 12px;
+            color: white;
+            margin: 16px 0;
+            font-size: 16px;
+        }
+    </style>
+    <section class="form-register">
+        <h4>Subir Documento</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="Name" class="control-label"></label>
+                        <input asp-for="Name" class="form-control" />
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Document" class="control-label"></label>
+                        <input asp-for="Document" class="form-control" />
+                        <span asp-validation-for="Document" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="FirstName" class="control-label"></label>
+                        <input asp-for="FirstName" class="form-control" />
+                        <span asp-validation-for="FirstName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Email" class="control-label"></label>
+                        <input asp-for="Email" class="form-control" />
+                        <span asp-validation-for="Email" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImageFile" class="control-label"></label>
+                        <input asp-for="ImageFile" class="form-control" />
+                        <span asp-validation-for="ImageFile" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="UploadDate" class="control-label"></label>
+                        <input asp-for="UploadDate" class="form-control" />
+                        <span asp-validation-for="UploadDate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>
+    </section>

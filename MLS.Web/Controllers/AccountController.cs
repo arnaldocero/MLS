@@ -14,20 +14,19 @@ namespace MLS.Web.Controllers
         private readonly IUserHelper _userHelper;
         private readonly IImageHelper _imageHelper;
         private readonly ICombosHelper _combosHelper;
-        List<SelectListItem> list = new List<SelectListItem>
-            {
-                
-                new SelectListItem { Value = "1", Text = "Userpaciente" }
-            };
+        
+        
 
         public AccountController(IUserHelper userHelper,
             IImageHelper imageHelper,
             ICombosHelper combosHelper
+            
 )
         {
             _userHelper = userHelper;
             _imageHelper = imageHelper;
             _combosHelper = combosHelper;
+            
 
         }
         public IActionResult Login()
@@ -148,7 +147,7 @@ namespace MLS.Web.Controllers
                 if (user == null)
                 {
                     ModelState.AddModelError(string.Empty, "This email is already used.");
-                    model.UserTypes = _combosHelper.GetComboRoles();
+                    model.UserTypes =_combosHelper.GetComboRoles();
                     return View(model);
                 }
                 else
